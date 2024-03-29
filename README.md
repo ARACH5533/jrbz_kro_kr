@@ -1,1 +1,2 @@
-# jrbz_kro_kr
+# jrbz.kro.kr
+beta version
