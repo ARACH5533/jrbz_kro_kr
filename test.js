@@ -90,11 +90,11 @@ const dialogs=[
     },
     (plr)=>{
         dialoger(plr,()=>{
-                plr.showPrompt("1: 자연\n2: 도시\n3: 판타지\n4: 우주",(text)=>{
+                plr.showPrompt("어떤 테마로 시작해볼까요?\n1: 자연  2: 도시\n3: 우주",(text)=>{
                     if(!!text)text='1';
-                    ([
-                        
-                    ])[Number(Array.from(text).find(i=>!isNaN(Number(i))&&0<Number(i)&&Number(i)<5))];
+                    dialoger(plr,()=>{
+                    Dial(plr,[Number(Array.from(text).find(i=>!isNaN(Number(i))&&0<Number(i)&&Number(i)<4))]+1);
+                    },{chat: "멋진 선택이에요! 이제 그 테마로 맵을 만들기 시작할게요.",time:3000});
 
                 });
                 Dial(plr,2);
@@ -104,7 +104,21 @@ const dialogs=[
             {chat: "먼저 맵을 만들어야 할 것 같아요. 어떤 테마로 시작해볼까요?", time: 4000},
         );
     },
-    (plr)=>{}
+    (plr)=>{//자연 2
+        dialoger(plr,()=>{
+
+        },{chat: "맵이 완성되었습니다! 이제 이 맵에 어떤 기능들을 추가하고 싶으신가요?",time: 3000});
+    },
+    (plr)=>{//도시 3
+        dialoger(plr,()=>{
+            
+        },{chat: "맵이 완성되었습니다! 이제 이 맵에 어떤 기능들을 추가하고 싶으신가요?",time: 3000});
+    },
+    (plr)=>{//우주 4
+        dialoger(plr,()=>{
+            
+        },{chat: "맵이 완성되었습니다! 이제 이 맵에 어떤 기능들을 추가하고 싶으신가요?",time: 3000});
+    },
 ];
 let chatingPlayers={};//"ID":{step:1,playing:true}
 Dial=(plr,step)=>{
@@ -144,5 +158,6 @@ App.onObjectTouched.Add(function (sender, x, y, tileID, obj) {
     }
 });
 App.onLeavePlayer.Add(function(player){
-    setPlay(player,false);
+    //setPlay(player,false);
+    chatingPlayers[plr.id]=null;
 });
