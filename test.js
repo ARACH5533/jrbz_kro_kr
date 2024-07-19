@@ -91,7 +91,7 @@ const dialogs=[
     (plr)=>{
         dialoger(plr,()=>{
                 plr.showPrompt("어떤 테마로 시작해볼까요?\n1: 자연  2: 도시\n3: 우주",(text)=>{
-                    if(!!text)text='1';
+                    if(text.length===0)text='1';
                     dialoger(plr,()=>{
                     Dial(plr,Number(Array.from(text).find(i=>!isNaN(Number(i))&&0<Number(i)&&Number(i)<4))+1);
                     },{chat: "멋진 선택이에요! 이제 그 테마로 맵을 만들기 시작할게요.",time:3000});
